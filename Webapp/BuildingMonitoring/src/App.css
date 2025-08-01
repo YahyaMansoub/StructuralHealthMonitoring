@@ -1,0 +1,289 @@
+/* Custom CSS for Structural Health Monitoring App */
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #f8fffe 0%, #e8f5e8 100%);
+  min-height: 100vh;
+}
+
+/* App Container */
+.App {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Header Styles */
+.header-navbar {
+  z-index: 1040;
+  position: sticky;
+  top: 0;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  box-shadow: 4px 0 20px rgba(45, 90, 39, 0.1);
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(45, 90, 39, 0.3);
+  border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(45, 90, 39, 0.5);
+}
+
+/* Building Card Styles */
+.building-card {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.building-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(45, 90, 39, 0.15) !important;
+}
+
+/* Sensor Card Styles */
+.sensor-card {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.sensor-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(125, 216, 125, 0.1),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.sensor-card:hover::before {
+  left: 100%;
+}
+
+/* Button Animations */
+.btn {
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Card Hover Effects */
+.card {
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Success Button Gradient */
+.btn-success {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  border: none;
+  color: white;
+}
+
+.btn-success:hover {
+  background: linear-gradient(135deg, #218838 0%, #1fa486 100%);
+  transform: translateY(-2px);
+}
+
+/* Badge Animations */
+.badge {
+  transition: all 0.2s ease;
+}
+
+/* Loading Spinner */
+.spinner-border {
+  border-width: 3px;
+}
+
+/* Custom Scrollbar for Debug Panel */
+.debug-panel::-webkit-scrollbar {
+  width: 8px;
+}
+
+.debug-panel::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.debug-panel::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.debug-panel::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Chart Container */
+.chart-container {
+  position: relative;
+  height: 200px;
+  width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .sidebar {
+    width: 250px !important;
+  }
+  
+  .main-content {
+    margin-left: 250px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar.show {
+    transform: translateX(0);
+  }
+  
+  .main-content {
+    margin-left: 0 !important;
+  }
+}
+
+/* Animation Keyframes */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(125, 216, 125, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(125, 216, 125, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(125, 216, 125, 0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Connected Status Animation */
+.status-connected {
+  animation: pulse 2s infinite;
+}
+
+/* Fade in animation */
+.fade-in {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.5s ease-out;
+}
+
+/* Green Theme Variables */
+:root {
+  --primary-green: #2d5a27;
+  --secondary-green: #4a7c59;
+  --light-green: #7dd87d;
+  --accent-green: #28a745;
+  --background-green: #f8fffe;
+  --border-green: #e8f5e8;
+  --text-dark: #2d5a27;
+  --text-muted: #666;
+}
+
+/* Text Colors */
+.text-primary-green {
+  color: var(--primary-green) !important;
+}
+
+.text-secondary-green {
+  color: var(--secondary-green) !important;
+}
+
+.text-light-green {
+  color: var(--light-green) !important;
+}
+
+/* Background Colors */
+.bg-primary-green {
+  background-color: var(--primary-green) !important;
+}
+
+.bg-secondary-green {
+  background-color: var(--secondary-green) !important;
+}
+
+.bg-light-green {
+  background-color: var(--light-green) !important;
+}
+
+/* Border Colors */
+.border-primary-green {
+  border-color: var(--primary-green) !important;
+}
+
+.border-secondary-green {
+  border-color: var(--secondary-green) !important;
+}
+
+.border-light-green {
+  border-color: var(--light-green) !important;
+}
